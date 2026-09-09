@@ -1,0 +1,27 @@
+# Ansible
+*.retry
+.retry/
+
+# Secrets
+*.vault
+vault_password_file
+.vault_pass
+
+# SSH keys
+*.pem
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# Environment files
+.env
+.env.*
+
+# Editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

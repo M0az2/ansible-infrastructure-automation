@@ -1,0 +1,2 @@
+Welcome to BlueWave Systems!
+This server is managed by Ansible.

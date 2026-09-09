@@ -1,0 +1,9 @@
+package_name: "nginx"
+webstate: "present"
+
+web_service: "nginx"
+web_root: "/usr/share/nginx/html"
+app_directory: "/opt/bluewave"
+
+app_user: "bluewave"
+app_group: "bluewave"

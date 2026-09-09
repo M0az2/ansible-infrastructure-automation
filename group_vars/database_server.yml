@@ -1,0 +1,3 @@
+db_package: "mariadb-server"
+dbstate: "present"
+db_service: "mariadb"
