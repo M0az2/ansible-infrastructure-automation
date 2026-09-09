@@ -1,8 +1,31 @@
 # Ansible Mid-Level Lab — BlueWave Systems
 
+![Ansible](https://img.shields.io/badge/Ansible-2.20.x-red)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey)
+
 Automated deployment and configuration of a multi-server environment using **Ansible**.
 
 The project demonstrates how Ansible can be used to configure a Web Server and a Database Server, manage packages and services, deploy dynamic content using Jinja2, and create application-level users, groups, and directories.
+
+---
+
+## Quick Start
+
+Clone the repository:
+
+```bash
+git clone https://github.com/M0az2/ansible-infrastructure-automation.git
+cd ansible-infrastructure-automation
+```
+
+Run the playbook:
+
+```bash
+ansible-playbook site.yml
+```
+
+> **Note:** This project was developed and tested in a **KodeKloud hands-on lab environment**. The committed inventory does not contain lab credentials or secrets.
 
 ---
 
@@ -61,8 +84,9 @@ The project demonstrates the following Ansible concepts:
 * Service management
 * File management
 * User and group management
-* Result handling with `register` and `debug`
 * Privilege escalation using `become`
+* Ansible builtin modules
+* Infrastructure automation
 * Ansible best practices
 
 ---
@@ -70,7 +94,7 @@ The project demonstrates the following Ansible concepts:
 ## Project Structure
 
 ```text
-ansible-midlevel-lab/
+ansible-infrastructure-automation/
 ├── ansible.cfg
 ├── inventory.ini
 ├── site.yml
@@ -79,20 +103,26 @@ ansible-midlevel-lab/
 │   └── database_server.yml
 ├── templates/
 │   └── index.html.j2
-└── files/
-    └── welcome.txt
+├── files/
+│   └── welcome.txt
+├── .gitignore
+├── LICENSE
+└── README.md
 ```
 
 ### File Description
 
-| File / Directory | Purpose                                |
-| ---------------- | -------------------------------------- |
-| `ansible.cfg`    | Project-level Ansible configuration    |
-| `inventory.ini`  | Defines managed hosts and groups       |
-| `site.yml`       | Main multi-play automation             |
-| `group_vars/`    | Group-specific configuration variables |
-| `templates/`     | Jinja2 templates                       |
-| `files/`         | Static files deployed to managed hosts |
+| File / Directory | Purpose                                                 |
+| ---------------- | ------------------------------------------------------- |
+| `ansible.cfg`    | Project-level Ansible configuration                     |
+| `inventory.ini`  | Defines managed hosts and groups                        |
+| `site.yml`       | Main multi-play automation                              |
+| `group_vars/`    | Group-specific configuration variables                  |
+| `templates/`     | Jinja2 templates                                        |
+| `files/`         | Static files deployed to managed hosts                  |
+| `.gitignore`     | Prevents unwanted or sensitive files from being tracked |
+| `LICENSE`        | Defines the project usage and distribution terms        |
+| `README.md`      | Project documentation                                   |
 
 ---
 
@@ -112,6 +142,8 @@ node02
 ```
 
 This allows the playbook to target each server according to its role.
+
+> The inventory committed to this repository is sanitized and does not contain lab credentials.
 
 ---
 
@@ -402,13 +434,12 @@ The project demonstrates the following Ansible builtin modules:
 | `ansible.builtin.file`     | Manage directories      |
 | `ansible.builtin.user`     | Manage users            |
 | `ansible.builtin.group`    | Manage groups           |
-| `ansible.builtin.debug`    | Display task results    |
 
 ---
 
 # Result Handling
 
-Ansible's `register` feature can store the result of a task:
+Ansible provides the `register` feature for storing the result of a task:
 
 ```yaml
 register: task_result
@@ -421,9 +452,9 @@ ansible.builtin.debug:
   var: task_result
 ```
 
-This project demonstrates the concept of result handling without unnecessarily registering every task.
+These features were studied as part of the lab and are useful for debugging, conditional automation, and inspecting task results.
 
-The result object can contain useful information such as:
+A registered result can contain information such as:
 
 ```text
 changed
@@ -432,8 +463,6 @@ rc
 stdout
 stderr
 ```
-
-This information can be used for debugging and conditional automation.
 
 ---
 
@@ -499,10 +528,10 @@ The project follows several Ansible best practices:
 * Group-specific configuration is stored in `group_vars`.
 * Jinja2 is used for dynamic content.
 * Meaningful task names are used.
-* Unnecessary `register` usage is avoided.
 * Privilege escalation is used where required.
 * The project follows a clear directory structure.
 * Sensitive credentials are excluded from the final repository.
+* Project-level configuration is used through `ansible.cfg`.
 
 ---
 
@@ -548,8 +577,8 @@ After completing this project, the following Ansible concepts were practiced:
 * File deployment
 * User and group management
 * Privilege escalation
-* Result registration
-* Debugging
+* Result registration concepts
+* Debugging concepts
 * Infrastructure automation
 * Basic Ansible project organization
 
@@ -572,3 +601,9 @@ The project provides a foundation for extending the environment with additional 
 * Roles
 * Environment-specific variables
 * CI/CD automation
+
+---
+
+## License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
